@@ -1,17 +1,90 @@
-class Result
-  def response (name,emotion)
-    if emotion=="Panic"
-      "Relax! Squacoons are friendly creatures."
-      elsif emotion=="Scared"
-      "Don't be afriad! Squacoons are friendly creatures."
-      elsif emotion=="Happy"
-      "I'M HAPPY YOU FOUND ONE TOO!!!"
-      elsif emotion=="Cute"
-      "I know they are adorable"
-      elsif emotion== "Yay"
-      "YAYYYYY!"
+class Emoji
+  def initialize
+    @emoji={
+      :smile => 0,
+      :confused => 0,
+      :grimace => 0,
+      :thumbs_up => 0
+      }
+  end
+ 
+  #question one results
+  def q1
+    if params[:tone] == "happy"
+      @emoji[:smile] += 1
+    elsif params[:tone] == "angry"
+      @emoji[:grimace] += 1
+    elsif params[:tone] == "sad"
+      @emoji[:confused] += 1
+    elsif params[:tone] == "bored"
+      @emoji[:thumbs_up] += 1
     end
   end
+  
+  #question two results
+  def q2
+    if params[:time] == "day"
+      @emoji[:smile] += 1
+    elsif params[:time] == "month"
+      @emoji[:thumbs_up] += 1
+    elsif params[:time] == "year"
+      @emoji[:confused] += 1
+    elsif params[:time] == "forever"
+      @emoji[:grimace] += 1
+    end
+  end
+  
+  #question three results
+  def q3
+    if params[:feel] == "annoyed"
+      @emoji[:grimace] += 1
+    elsif params[:feel] == "indiff"
+      @emoji[:thumbs_up] += 1
+    elsif params[:feel] == "confused"
+      @emoji[:confused] += 1
+    elsif params[:feel] == "cheerful"
+      @emoji[:smile] += 1
+    end
+  end
+  
+    #question four results
+  def q4
+    if params[:pers] == "serious"
+      @emoji[:grimace] += 1
+    elsif params[:pers] == "chill"
+      @emoji[:thumbs_up] += 1
+    elsif params[:pers] == "funny"
+      @emoji[:smile] += 1
+    elsif params[:pers] == "indecisive"
+      @emoji[:confused] += 1
+    end
+  end
+  
+  #question five results
+  def q5
+    if params[:react] == "hahaha"
+      @emoji[:smile] += 1
+    elsif params[:react] == "what"
+      @emoji[:confused] += 1
+    elsif params[:react] == "ugh"
+      @emoji[:grimace] += 1
+    elsif params[:react] == "okay"
+      @emoji[:thumbs_up] += 1
+    end
+  end
+  
+  def result
+    q1
+    q2
+    q3
+    q4
+    q5
+    values = @emoji.values
+    puts values
+    
+  end
 end
-    Test = Result.new
-   puts Test.response("kyla", "Happy")
+
+
+Test = Emoji.new
+puts Test.result
