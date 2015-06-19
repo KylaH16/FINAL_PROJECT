@@ -105,3 +105,4 @@ end
 
 # Test = Emoji.new
 # puts Test.result
+

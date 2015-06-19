@@ -12,7 +12,12 @@ class MyApp < Sinatra::Base
    # @params = params
     @answer= Responder.result
     Image = ImageGetter.new
-    @url_array = Image.convert(@answer)
+    @url_array = Image.convert(@answer)s
+    Responder =Result.new
+    name = params[:name]
+    emo = params[:emotion]
+    puts params
+    @answer= Responder.response(name,emo)
     #respond.erb
     erb :respond
   end
